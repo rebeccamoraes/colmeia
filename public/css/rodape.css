@@ -1,0 +1,10 @@
+#rodape{
+	background-color: #000;
+	margin-top: 10px;
+	padding: 2rem 0;
+	color: #FFE255;
+}
+
+#rodape .creditos{
+	text-align: center;
+}
