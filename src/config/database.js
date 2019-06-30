@@ -14,19 +14,21 @@ CREATE TABLE IF NOT EXISTS usuarios (
 const INSERIR_USUARIO_1 = 
 `
 INSERT INTO usuarios (
-    nome_completo, 
+    nome, 
     email,
-    senha
-) SELECT 'Mariana Silva', 'mariana@ufg.br', '123' WHERE NOT EXISTS (SELECT * FROM usuarios WHERE email = 'mariana@ufg.br')
+    senha,
+    categoria
+) SELECT 'Mariana Silva', 'mariana@ufg.br', '123', 'A' WHERE NOT EXISTS (SELECT * FROM usuarios WHERE email = 'mariana@ufg.br')
 `;
 
 const INSERIR_USUARIO_2 =
 `
 INSERT INTO usuarios (
-    nome_completo, 
+    nome, 
     email,
-    senha
-) SELECT 'Joaquim Nogueira', 'joaquim@ufg.br', '123' WHERE NOT EXISTS (SELECT * FROM usuarios WHERE email = 'joaquim@ufg.br')
+    senha,
+    categoria
+) SELECT 'Joaquim Nogueira', 'joaquim@ufg.br', '123', 'E' WHERE NOT EXISTS (SELECT * FROM usuarios WHERE email = 'joaquim@ufg.br')
 `;
 
 const DEMANDAS_SCHEMA = 
@@ -67,7 +69,7 @@ INSERT INTO demandas (
 
 ', 1)`;
 
-const INSERIR_DEMANDA_3 =
+const INSERIR_DEMANDA_4 =
     `
 INSERT INTO demandas (
     titulo,
@@ -80,7 +82,7 @@ INSERT INTO demandas (
 
 bd.serialize(() => {
     bd.run("PRAGMA foreign_keys=ON");
-    br.run(USUARIOS_SCHEMA);
+    bd.run(USUARIOS_SCHEMA);
     bd.run(INSERIR_USUARIO_1);
     bd.run(INSERIR_USUARIO_2);
     bd.run(DEMANDAS_SCHEMA);
